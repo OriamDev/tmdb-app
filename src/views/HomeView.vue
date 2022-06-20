@@ -22,7 +22,7 @@
       <div class="col-4 offset-4">
         <select name="" id="" class="form-select bg-transparent text-white" v-model="currentHistoric" @change="currentHistoricChange">
           <option v-for="(item, index) in historic" :key="index" :value="item.id">
-            {{ getDateString(item.data) }}
+            {{ getDateString(item.creationDate) }}
           </option>
         </select>
       </div>
@@ -72,7 +72,7 @@ export default {
   methods: {
     getMovies: async function () {
       // const response = await fetch('https://api.themoviedb.org/3/trending/movies/day?api_key=2d9bfcad2b670144f0f5a21c96686090')
-      const response = await fetch('trending_' + this.historic[this.currentHistoric - 1].data + '.json')
+      const response = await fetch('trending_' + this.historic[this.currentHistoric - 1].creationDate + '.json')
       const data = await response.json()
       this.movies = JSON.parse(JSON.stringify(data)).results
       this.getTopTen()

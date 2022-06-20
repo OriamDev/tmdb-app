@@ -175,7 +175,7 @@ export default {
     getShowMoviesCount () {
       if(this.activeGenres.length === 0)
         this.showMovies = JSON.parse(localStorage.getItem('movies')).length
-      this.showMovies = JSON.parse(localStorage.getItem('filteredMovies')).length
+      this.showMovies = JSON.parse(localStorage.getItem('filteredMovies'))?.length
     }
   }
 }

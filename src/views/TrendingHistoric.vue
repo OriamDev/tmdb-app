@@ -1,35 +1,34 @@
 <template>
   <div class="container" style="padding-bottom: 50px; padding-top: 150px;">
     <div class="row justify-content-end">
-      <div class="col-lg-12">
+      <div class="col-lg-12 d-flex justify-content-between">
         <h1 class="mb-0" style="color: lightgray">Trending Historic</h1>
+        <button class="btn btn-lg btn-outline-primary" @click="updateList">Update Trending List</button>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row">
-      <div class="row">
 
-        <div class="col-12" v-for="(item, index) in historic" :key="index">
-          <div class="box">
-           <div class="d-flex align-items-center">
-             <div class="text-white me-3">{{ index + 1 }}</div>
-             <h4 class="m-0">{{ getDateString(item.data) }}</h4>
-           </div>
-            <div class="movie">
-              <p class="text-white">
-                <span class="me-3">The Unbearable Weight of Massive Talent</span>
-                <span class="me-3"><b>Score: </b>7.2</span>
-                <span><b>Votes: </b>298</span>
-              </p>
-            </div>
-            <div class="actions">
-              <button class="btn btn-sm btn-outline-primary">Remove</button>
-            </div>
+      <div class="col-12" v-for="(item, index) in historic" :key="index">
+        <div class="box">
+          <div class="d-flex align-items-center">
+            <div class="text-white me-3">{{ index + 1 }}</div>
+            <h4 class="m-0">{{ getDateString(item.creationDate) }}</h4>
+          </div>
+          <div class="movie">
+            <p class="text-white">
+              <span class="me-3">The Unbearable Weight of Massive Talent</span>
+              <span class="me-3"><b>Score: </b>7.2</span>
+              <span><b>Votes: </b>298</span>
+            </p>
+          </div>
+          <div class="actions">
+            <button class="btn btn-sm btn-outline-primary" @click="removeTrendingItem(item.id)">Remove</button>
           </div>
         </div>
-
       </div>
+
     </div>
   </div>
 </template>
@@ -54,6 +53,12 @@ export default {
     getDateString (date) {
       let myDate = new Date(date)
       return myDate.toDateString()
+    },
+    updateList () {
+      alert('Updating ...')
+    },
+    removeTrendingItem (trendingId) {
+      alert(trendingId)
     }
   }
 }
